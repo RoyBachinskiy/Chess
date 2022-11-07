@@ -29,7 +29,11 @@ public class Pawn extends ChessPiece{
                 if (line == start && line + 2 * direction == toLine){
                     return chessBoard.board[toLine][toColumn] == null && chessBoard.board[line + direction][column] == null;
                 }
-            } else return false;
+            } else {
+                if ((Math.abs(line - toLine) == 1) && (Math.abs(column - toColumn) == 1) && chessBoard.board[toLine][toColumn] != null){
+                    return !chessBoard.board[toLine][toColumn].getColor().equals(color);
+                } else return false;
+            }
         }
         return false;
     }

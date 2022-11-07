@@ -13,7 +13,11 @@ public class Bishop extends ChessPiece {
         if (line != toLine && column != toColumn &&
                 Math.max(line, toLine) - Math.min(line, toLine) == Math.max(column, toColumn) - Math.min(column, toColumn) &&
                 checkPosition(line) && checkPosition(column) && checkPosition(toLine) && checkPosition(toColumn) &&
-                (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color))) {
+                (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color)) && chessBoard.board[line][column] != null) {
+
+            if (!chessBoard.board[line][column].equals(this)){
+                return false;
+            }
 
             if ((column == Math.min(column, toColumn) && line == Math.max(line, toLine)) ||
                     (toColumn == Math.min(column, toColumn) && toLine == Math.max(line, toLine))) {
